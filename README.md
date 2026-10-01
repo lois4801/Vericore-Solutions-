@@ -1,6 +1,6 @@
-<p align="center"><img src="assets/banner.svg" width="100%" alt="VERICORE — Every Vendor. One Truth."></p>
+<p align="center"><a href="https://lois4801.github.io/Vericore-Solutions-/"><img src="assets/banner.svg" width="100%" alt="VERICORE — Every Vendor. One Truth. — click to open the live site"></a></p>
 
-<h1 align="center">VERICORE</h1>
+<h1 align="center"><a href="https://lois4801.github.io/Vericore-Solutions-/">VERICORE</a></h1>
 <p align="center"><b>Every vendor. One truth.</b><br>
 Vendor master-data intelligence for industrial supply networks.</p>
 
@@ -10,6 +10,8 @@ Vendor master-data intelligence for industrial supply networks.</p>
   <img src="https://img.shields.io/badge/3D-WebGL%20%C3%97%202-C8FF3D?style=flat-square&labelColor=0B0D10&color=12151B" alt="3d">
   <img src="https://img.shields.io/badge/license-MIT-FFB454?style=flat-square&labelColor=0B0D10&color=12151B" alt="license">
 </p>
+
+<p align="center"><a href="https://lois4801.github.io/Vericore-Solutions-/"><img src="https://img.shields.io/badge/%E2%96%B6%20OPEN%20THE%20LIVE%20COMMAND%20CENTER-C8FF3D?style=for-the-badge&labelColor=0B0D10&color=12151B" alt="Open the live command center"></a></p>
 
 <p align="center"><img src="assets/divider.svg" width="60%"></p>
 
