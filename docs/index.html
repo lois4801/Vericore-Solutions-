@@ -229,7 +229,11 @@ tailwind.config = {
       <span class="font-mono text-volt text-sm">02</span>
       <h2 class="font-disp font-bold text-4xl md:text-6xl tracking-tight">The <span class="text-volt">signal</span> layer</h2>
     </div>
-    <p class="text-mute max-w-2xl mb-14" data-reveal>Live decision surfaces built on governed golden records. Every chart below is only as trustworthy as the vendor master underneath it.</p>
+    <p class="text-mute max-w-2xl mb-6" data-reveal>Live decision surfaces built on governed golden records. Every chart below is only as trustworthy as the vendor master underneath it. <span class="text-fog">The charts are linked — click a sunburst category, a histogram bucket, or a Pareto bar and the others respond.</span></p>
+    <div id="linkchip" class="hidden mb-8 inline-flex items-center gap-3 border border-volt/40 bg-volt/10 rounded-full px-5 py-2 font-mono text-[11px] tracking-widest">
+      <span class="tick"></span><span class="text-volt">LINKED FILTER</span><span id="linkchip-txt" class="text-fog"></span>
+      <button id="linkreset" data-hover class="ml-2 text-mute hover:text-volt transition-colors">✕ RESET</button>
+    </div>
 
     <div class="grid grid-cols-12 gap-6">
       <!-- Network graph -->
@@ -734,6 +738,8 @@ function radarOption(){
 }
 
 /* ---------- Bubble scatter: spend x confidence ---------- */
+const SCATTER_CATS=['Safety & PPE','Tools & Abrasives','Welding','Janitorial','Electrical & MRO'];
+const SCATTER_NAMES=['Northfast','Vertex Weld','Acme Ind.','Pacifica','Ironline','Summit Abr.','Blue Ridge','Cascade Fst.','True North','Great Lakes','Apex Safety','Coreline','Duratek','Everline','Fortis MRO','Gateway Sup.','Harborline','Ionis Tools','Jetline','Kestrel PPE','Lakeshore','Magna Sup.','Norfolk','Omnia Weld','Prairie Tool','Quanta Elec.'];
 function scatterOption(){
   const pts=[]; let seed=7;
   const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647;};
@@ -742,10 +748,11 @@ function scatterOption(){
     const conf=Math.round(62+rnd()*37);
     const dups=Math.round(1+rnd()*10);
     const col=(spend>8&&conf<86)?AMBER:(spend>8?VOLT:CY);
-    pts.push({value:[spend,conf,dups],itemStyle:{color:col,opacity:.75,borderColor:col,borderWidth:1}});
+    pts.push({name:SCATTER_NAMES[i],value:[spend,conf,dups],cat:SCATTER_CATS[i%5],
+      itemStyle:{color:col,opacity:.75,borderColor:col,borderWidth:1}});
   }
   return {
-    tooltip:{...darkTooltip(),formatter:p=>'Spend $'+p.value[0]+'M · Confidence '+p.value[1]+'% · '+p.value[2]+' duplicate records'},
+    tooltip:{...darkTooltip(),formatter:p=>'<b>'+p.name+'</b> · '+p.data.cat+'<br>Spend $'+p.value[0]+'M · Confidence '+p.value[1]+'% · '+p.value[2]+' duplicate records'},
     backgroundColor:'transparent',
     grid:{left:56,right:24,top:26,bottom:46},
     xAxis:{type:'value',name:'ANNUAL SPEND $M',nameLocation:'middle',nameGap:28,
@@ -805,6 +812,70 @@ function pushLine(){
 }
 for(let i=0;i<8;i++) pushLine();
 setInterval(pushLine, 2202);
+
+/* ---------- Linked chart interactions ---------- */
+const LINK = {category:null, confRange:null, vendor:null};
+const VENDOR_CAT = {'Fastenal':'Tools & Abrasives','Grainger':'Electrical & MRO','3M':'Safety & PPE',
+  'Honeywell':'Safety & PPE','Milwaukee':'Tools & Abrasives','Lincoln Elec.':'Welding','MSA':'Safety & PPE',
+  'Kimberly-Cl.':'Janitorial','Norton':'Tools & Abrasives','Brady':'Electrical & MRO'};
+const CONF_BUCKETS = {'60–64':[60,65],'65–69':[65,70],'70–74':[70,75],'75–79':[75,80],
+  '80–84':[80,85],'85–89':[85,90],'90–94':[90,95],'95–100':[95,101]};
+
+function scatterPass(p){
+  if(LINK.category && p.cat!==LINK.category) return false;
+  if(LINK.confRange && (p.value[1]<LINK.confRange[0]||p.value[1]>=LINK.confRange[1])) return false;
+  return true;
+}
+function paretoPass(name){
+  if(LINK.vendor) return name===LINK.vendor;
+  if(LINK.category) return VENDOR_CAT[name]===LINK.category;
+  return true;
+}
+function applyLinks(){
+  const sc=charts['chart-scatter'], pa=charts['chart-pareto'];
+  if(sc){
+    const base=(sc.__baseData)||(sc.__baseData=sc.getOption().series[0].data.map(d=>({...d})));
+    sc.setOption({series:[{data:base.map(d=>({...d,itemStyle:{...d.itemStyle,
+      opacity:scatterPass(d)?(d.itemStyle.__o||.75):.1}}))}]});
+  }
+  if(pa){
+    const opt=pa.getOption();
+    const spend=opt.series[0].data.map(d=>(typeof d==='object')?d.value:d);
+    const names=opt.xAxis[0].data;
+    pa.setOption({series:[{data:spend.map((v,i)=>({value:v,
+      itemStyle:{color:VOLT,opacity:paretoPass(names[i])?1:.15,borderRadius:[4,4,0,0]}}))}]});
+  }
+  const chip=document.getElementById('linkchip'), txt=document.getElementById('linkchip-txt');
+  const parts=[];
+  if(LINK.category)parts.push('category: '+LINK.category);
+  if(LINK.vendor)parts.push('vendor: '+LINK.vendor);
+  if(LINK.confRange)parts.push('confidence '+LINK.confRange[0]+'–'+LINK.confRange[1]+'%');
+  if(parts.length){chip.classList.remove('hidden');txt.textContent=parts.join('  ·  ');}
+  else chip.classList.add('hidden');
+}
+function wireLinks(){
+  const sun=charts['chart-sun'], hist=charts['chart-hist'], pa=charts['chart-pareto'];
+  if(sun) sun.on('click',p=>{
+    if(!p.name||!SCATTER_CATS.includes(p.name))return;
+    LINK.category=(LINK.category===p.name)?null:p.name; LINK.vendor=null; applyLinks();
+  });
+  if(hist) hist.on('click',p=>{
+    if(!p.name)return;
+    const r=CONF_BUCKETS[p.name]; if(!r)return;
+    LINK.confRange=(LINK.confRange&&LINK.confRange[0]===r[0])?null:r; LINK.vendor=null; applyLinks();
+  });
+  if(pa) pa.on('click',p=>{
+    if(p.componentType!=='series'||!p.name)return;
+    LINK.vendor=(LINK.vendor===p.name)?null:p.name; applyLinks();
+  });
+  const rb=document.getElementById('linkreset');
+  if(rb)rb.addEventListener('click',()=>{LINK.category=null;LINK.vendor=null;LINK.confRange=null;applyLinks();});
+}
+const __origMake=make;
+make=function(id,opt){const c=__origMake(id,opt); setTimeout(()=>{
+  if(!charts.__wired && charts['chart-sun'] && charts['chart-hist'] && charts['chart-pareto']){wireLinks();charts.__wired=true;}
+  if(LINK.category||LINK.vendor||LINK.confRange) applyLinks();
+},120); return c;};
 
 /* ---------- THREE.JS — hero particle network ---------- */
 function initHero(){

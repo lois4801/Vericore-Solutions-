@@ -80,3 +80,22 @@ optimization (+0.4M).
 **For:** the operating model.
 **Solves:** repeatability — anyone can see the five steps, their inputs, and why the
 order matters.
+
+
+---
+
+## Linked interactions — charts that respond to each other
+
+The command center is not a dashboard of isolated widgets. From the Signal section onward,
+charts share one filter state:
+
+| You click… | …and these respond |
+|---|---|
+| **Sunburst category** (e.g. *Safety & PPE*) | Scatter matrix dims all non-category bubbles; Pareto highlights that category's vendors; filter chip appears |
+| **Histogram bucket** (D&B confidence range) | Scatter dims bubbles outside that confidence band; chip shows the active range |
+| **Pareto bar** (a vendor) | That vendor's bar isolates at full opacity; the rest fade; chip shows the vendor |
+| **✕ RESET chip** (or re-click the same element) | Full state restored |
+
+The chip at the top of the Signal section (`LINKED FILTER`) always displays the active
+combination, e.g. `category: Safety & PPE · confidence 90–95%` — so a stakeholder can
+verbally reproduce any view they are looking at.

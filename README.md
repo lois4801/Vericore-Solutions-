@@ -1,98 +1,133 @@
-# VERICORE — Every Vendor. One Truth.
+<p align="center"><img src="assets/banner.svg" width="100%" alt="VERICORE — Every Vendor. One Truth."></p>
 
-**Vericore** is a (concept) vendor-master-data intelligence company. It sells one thing: a
-**governed golden record for every vendor**, built on **Stibo STEP** master data management,
-**D&B** third-party enrichment, and **Infor SX.e** ERP integration — so every stakeholder
-spend decision stands on data that can be trusted.
+<h1 align="center">VERICORE</h1>
+<p align="center"><b>Every vendor. One truth.</b><br>
+Vendor master-data intelligence for industrial supply networks.</p>
 
-![Hero](assets/hero.png)
+<p align="center">
+  <img src="https://img.shields.io/badge/website-live-0B0D10?style=flat-square&labelColor=C8FF3D&color=12151B" alt="website">
+  <img src="https://img.shields.io/badge/visualizations-15%20interactive-67E8F9?style=flat-square&labelColor=0B0D10&color=12151B" alt="viz">
+  <img src="https://img.shields.io/badge/3D-WebGL%20%C3%97%202-C8FF3D?style=flat-square&labelColor=0B0D10&color=12151B" alt="3d">
+  <img src="https://img.shields.io/badge/license-MIT-FFB454?style=flat-square&labelColor=0B0D10&color=12151B" alt="license">
+</p>
 
----
+<p align="center"><img src="assets/divider.svg" width="60%"></p>
 
-## Live site
+## 🏭 The company
 
-**The full interactive command center — every visualization, animation and 3D layer — is the repo itself:**
-
-| Where | Link |
-|---|---|
-| Open the site (this repo, `docs/`) | [`docs/index.html`](docs/index.html) |
-| GitHub Pages (once enabled: Settings → Pages → `/docs`) | `https://<you>.github.io/vericore/` |
-
-The site is a single self-contained HTML file (Tailwind / ECharts / GSAP / Three.js via CDN,
-imagery embedded). Every chart is interactive: tooltips, hover states, live-updating feeds,
-WebGL 3D with mouse parallax.
-
----
-
-## Company at a glance
+**Vericore** embeds inside industrial supply networks and runs the one layer everything
+else stands on: **a governed golden record for every vendor**. Built on **Stibo STEP**
+master-data management, **D&B** enrichment and **Infor SX.e / AS/400** ERP integration,
+Vericore turns fragmented supplier records into a decision-grade asset.
 
 | | |
 |---|---|
-| **Tagline** | Every vendor. One truth. |
-| **HQ** | Edmonton, AB, Canada — 53.55°N 113.49°W |
-| **Stack** | Stibo STEP (MDM) · D&B enrichment · Infor SX.e / AS/400 · proprietary e-Crib network |
-| **Core metric** | 42,318 raw vendor records → 31,240 golden records · 92/100 master-data health · $3.1M annualized recovery |
-| **Method** | Ingest → Profile → Match → Merge → Govern |
+| 📍 HQ | Edmonton, AB, Canada — 53.55°N 113.49°W |
+| 🧱 Stack | Stibo STEP (MDM) · D&B enrichment · Infor SX.e / AS/400 · e-Crib network |
+| 🎯 Core metric | 42,318 raw records → **31,240 golden records** |
+| 💚 Master-data health | **92 / 100** |
+| 💰 Annualized recovery | **$3.1M** |
+| 🔁 Method | **Ingest → Profile → Match → Merge → Govern** |
 
----
+<p align="center"><img src="assets/hero.png" width="100%"></p>
 
-## Services & products
+## 🧰 Services
 
-- **[Services](docs/services.md)** — Integrated Supply, Vendor-Managed Inventory (VMI),
-  Customer-Managed Inventory (CMI), storeroom management, point-of-use vending, digital
-  procurement, safety services, e-Crib SaaS platform.
-- **[Products](docs/products.md)** — MRO & safety supplies (millions of SKUs), own-manufactured
-  safety equipment (Encon), vending hardware (CabLock, AccuCab), women's PPE line.
-- **[Data pain points → solutions](docs/pain-points.md)** — the four fragmentation failures
-  (SX.e field drift, STEP duplicates, D&B sub-threshold matches, e-Crib site variance) and the
-  succeeding solution for each, mapped to stakeholder decisions.
-
----
-
-## Visualization gallery
-
-Each visualization in the command center answers a stakeholder question. Full write-up:
-**[docs/visualizations.md](docs/visualizations.md)**
-
-| Visualization | What it's for | What it solves |
+| | Service | What it does |
 |---|---|---|
-| Duplicate-cluster network graph | See which records are the same vendor | Finds the 11× duplicate records per vendor before they split invoices |
-| Live merge-resolution terminal | Watch governance happen | Auditability — every merge, enrichment and hierarchy change is logged |
-| D&B match-confidence histogram | Know where automation stops | Separates auto-merge (≥90) from the 27% needing steward judgment |
-| Vendor hierarchy sunburst | Roll sites up to parents | Makes $4.2M parent spend visible instead of eleven small vendors |
-| Master-data health gauge | One number for trust | 92/100 — the confidence level every downstream report inherits |
-| Spend Pareto | 80/20 concentration | Shows which vendors justify negotiated contracts |
-| Record-lifecycle Sankey | Raw → golden flow | Quantifies the pipeline: 42,318 in, 31,240 governed out |
-| Match-throughput area (24 wks) | Prove momentum | Auto-merge vs review vs reject trend over a governance program |
-| Site × field heatmap | Target cleansing effort | Pinpoints which of 12 sites and 8 fields are dirty first |
-| Supplier constellation (3D/WebGL) | Global relationship context | Rotating 3D view of the supplier network and its relationships |
-| Quality-dimensions radar | Benchmark maturity | Today vs post-governance across 6 data-quality dimensions |
-| Spend × confidence bubble matrix | Prioritize by value × risk | Amber priority zone = high-spend, low-confidence vendors fixed first |
-| Deduplication waterfall | Dollars recovered | $3.1M annualized: duplicate-pay recovery, tail-spend consolidation, rebates, freight |
-| Method timeline | The operating model | The 5-step lifecycle: Ingest → Profile → Match → Merge → Govern |
+| 🏗️ | **Integrated supply** | Vericore staff embedded on customer sites running the whole MRO supply chain |
+| 📦 | **Vendor-managed inventory (VMI)** | On-site ordering & replenishment, owned by Vericore |
+| 🔍 | **Customer-managed inventory (CMI)** | Customer keeps control; Vericore provides scan tools + governed data |
+| 🗄️ | **Storeroom management** | One SaaS portal for storerooms, vending, VMI/CMI locations |
+| 🎰 | **Point-of-use vending** | CabLock / AccuCab machines; every dispense tied to employee & cost center |
+| 🛒 | **Digital procurement** | Tailored e-catalogs, authorization controls, rogue-spend blocking |
+| 🦺 | **Safety services** | Inspection, testing, rentals, certification, training |
+| 🖥️ | **e-Crib platform** | Proprietary web+mobile inventory backbone interfacing with customer ERP |
 
-### Preview
+→ full detail in **[docs/services.md](docs/services.md)**
 
-| Core dashboard | 3D + radar + matrix | Impact |
+## 📦 Products
+
+| | Product line |
+|---|---|
+| 🔩 | **MRO & safety supplies** — millions of SKUs: PPE (incl. women's PPE line), tools, abrasives, cutting, welding, janitorial |
+| 🥽 | **Encon safety equipment** — own-manufactured protective clothing, eyewash/drench units, storage cabinets |
+| 🤖 | **Vending hardware** — CabLock / AccuCab point-of-use machines |
+| 🥇 | **Data products** — golden vendor records, hierarchy roll-ups, data-quality scorecards, match/merge feeds |
+
+→ full detail in **[docs/products.md](docs/products.md)**
+
+<p align="center"><img src="assets/divider.svg" width="60%"></p>
+
+## ⚠️ Data pain points → ✅ solutions → 🎯 stakeholder decisions
+
+| Pain point | Root cause | Solution | Decision it unlocks |
+|---|---|---|---|
+| 🌀 **Field drift** | One supplier = 14 name variants across SX.e branches | Standardization + survivorship rules in STEP | 🎯 **CFO/AP:** recover $1.2M in duplicate payments |
+| 👥 **Duplicates** | Up to 11 records per vendor; no hierarchies | Deduplication + parent roll-ups | 🎯 **Category mgmt:** consolidate $0.9M tail spend |
+| ❓ **Match ambiguity** | 27% of D&B candidates below auto-merge | Thresholded auto-merge + steward review queue | 🎯 **Procurement:** every merge auditable & defensible |
+| 🕸️ **Site variance** | 160+ e-Crib storerooms never reconciling | Governed site feeds + nightly reconciliation | 🎯 **Operations:** targeted cleansing, one trusted vendor number |
+
+→ full write-up in **[docs/pain-points.md](docs/pain-points.md)**
+
+## 🛰️ The command center — live
+
+**The repo is the demo.** The full interactive site is served straight from `docs/` —
+15 visualizations, 2 WebGL 3D scenes, a live merge-resolution feed, and **charts that
+talk to each other**:
+
+> 🖱️ Click a **sunburst category** → the spend×confidence matrix and the Pareto re-filter.
+> 🖱️ Click a **histogram bucket** → bubbles outside that D&B confidence range dim.
+> 🖱️ Click a **Pareto bar** → that vendor isolates everywhere. A linked-filter chip tracks state.
+
+| | | |
 |---|---|---|
 | ![core](assets/signal-core.png) | ![3d](assets/signal-3d.png) | ![impact](assets/impact.png) |
+| Core dashboard — graph, terminal, histogram, sunburst, gauge | **3D supplier constellation** + radar + priority-zone matrix | Deduplication waterfall + stakeholder cards |
 
----
+**Open it:**
+- 📂 [`docs/index.html`](docs/index.html) — double-click, no build, no server
+- 🌐 GitHub Pages: Settings → Pages → source **`/docs`** → `https://<you>.github.io/vericore/`
+- 🚀 Or drag-and-drop the standalone file on [Netlify Drop](https://app.netlify.com/drop)
 
-## Repo structure
+## 📊 Visualization gallery
+
+What every visualization is **for** and what it **solves** — full guide in
+**[docs/visualizations.md](docs/visualizations.md)**.
+
+| # | Visualization | For | Solves |
+|---|---|---|---|
+| 1 | 🕸️ WebGL hero network (3D) | Mental model | Records are nodes; governance connects them |
+| 2 | 🔗 Duplicate-cluster graph | Same vendor, many names | Finds the 11× before invoices split |
+| 3 | 📟 Live merge terminal | Watch governance work | The audit trail auditors ask for |
+| 4 | 📊 D&B confidence histogram | Where automation stops | Staffs the steward queue (27%) |
+| 5 | 🌞 Hierarchy sunburst | Roll-up to parents | $4.2M concentration made visible |
+| 6 | 💚 Health gauge (92/100) | One trust number | Every report inherits its credibility |
+| 7 | 📈 Spend Pareto | 80/20 targeting | Who earns a negotiated contract |
+| 8 | 🌊 Record-lifecycle Sankey | Raw → golden | Nothing disappears silently |
+| 9 | 🗓️ Throughput area (24 wk) | Prove momentum | Governance compounds, not one-off |
+| 10 | 🔥 Site × field heatmap | Target cleansing | Fix order, not guesswork |
+| 11 | 🌐 Supplier constellation (3D) | Relationship space | Global context, occluded-depth 3D |
+| 12 | 🎯 Quality radar | Maturity benchmark | Today vs post-governance gaps |
+| 13 | 🫧 Spend × confidence matrix | Prioritize value × risk | Amber zone = fix-first list |
+| 14 | 💵 Deduplication waterfall | The money | $3.1M annualized, decomposed |
+| 15 | 🧭 Method timeline | Operating model | Repeatable 5-step lifecycle |
+
+## 🗂️ Repo structure
 
 ```
 vericore/
-├── index.html                  # redirect → docs/
+├── index.html                  # → redirect into docs/
 ├── docs/
 │   ├── index.html              # THE SITE (self-contained, Pages-ready)
-│   ├── services.md             # company services
-│   ├── products.md             # company products
-│   ├── pain-points.md          # data pain points → solutions → decisions
-│   └── visualizations.md       # what every visualization is for & solves
-└── assets/                     # rendered screenshots used in this README
+│   ├── services.md  products.md  pain-points.md  visualizations.md
+├── assets/                     # rendered screenshots + animated SVG banner
+└── README.md
 ```
 
-## Run locally
+## 🧪 Tech
 
-Open `docs/index.html` in any modern browser. No build step, no server required.
+`HTML · Tailwind CSS · ECharts 5 · Three.js r128 (WebGL) · GSAP + ScrollTrigger · Lenis smooth scroll`
+
+<p align="center"><img src="assets/divider.svg" width="60%"></p>
+<p align="center"><sub>VERICORE — vendor master-data intelligence · concept brand · EST. 2026</sub></p>
